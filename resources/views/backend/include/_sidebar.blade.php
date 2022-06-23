@@ -19,11 +19,11 @@
             </li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-menu menu-icon"></i><span class="nav-text">Subcategory</span>
+                    <i class='fas menu-icon'>&#xf0cb;</i><span class="nav-text">Subcategory</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="./table-basic.html" aria-expanded="false">List Subcategory</a></li>
-                    <li><a href="./table-datatable.html" aria-expanded="false">Add Subcategory</a></li>
+                    <li><a href="{{ route('subcategory.index') }}" aria-expanded="false">List Subcategory</a></li>
+                    <li><a href="{{ route('subcategory.create') }}" aria-expanded="false">Add Subcategory</a></li>
                 </ul>
             </li>
 
