@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AjaxController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,10 +38,14 @@ Route::group(['middleware' => 'admin_auth'], function()
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/admin/category', CategoryController::class);
     Route::resource('/admin/subcategory', SubcategoryController::class);
+    Route::resource('/admin/package', PackageController::class);
 
-     // Ajax Controller Route
-     Route::post('/categoryUpdateStatus', [AjaxController::class, 'categoryUpdateStatus'])->name('category.updateStatus');
-     Route::post('/subcategoryUpdateStatus', [AjaxController::class, 'subcategoryUpdateStatus'])->name('subcategory.updateStatus');
+    // Ajax Controller Route
+    Route::post('/admin/categoryUpdateStatus', [AjaxController::class, 'categoryUpdateStatus'])->name('category.updateStatus');
+    Route::post('/admin/subcategoryUpdateStatus', [AjaxController::class, 'subcategoryUpdateStatus'])->name('subcategory.updateStatus');
+    Route::post('/admin/packageUpdateStatus', [AjaxController::class, 'packageUpdateStatus'])->name('package.updateStatus');
+    Route::post('/admin/loadSubcategory', [AjaxController::class, 'loadSubcategory'])->name('package.loadSubcategory');
+    Route::post('/admin/loadSeletedSubcategory', [AjaxController::class, 'loadSeletedSubcategory'])->name('package.loadSeletedSubcategory');
 
 });
 

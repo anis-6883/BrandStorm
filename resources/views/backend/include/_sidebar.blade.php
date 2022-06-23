@@ -26,6 +26,15 @@
                     <li><a href="{{ route('subcategory.create') }}" aria-expanded="false">Add Subcategory</a></li>
                 </ul>
             </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class='fas menu-icon'>&#xf1c6;</i><span class="nav-text">Package</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('package.index') }}" aria-expanded="false">List Package</a></li>
+                    <li><a href="{{ route('package.create') }}" aria-expanded="false">Add Package</a></li>
+                </ul>
+            </li>
 
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
