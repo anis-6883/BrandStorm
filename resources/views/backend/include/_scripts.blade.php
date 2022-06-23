@@ -24,4 +24,37 @@
 
 <script src="{{ asset('assets/backend/js/dashboard/dashboard-1.js') }}"></script>
 
+<!-- Sweet Alert -->
+<script src="{{ asset('assets/backend/js/sweetalert2@11.js') }}"></script>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+
+    @if (session()->has('success'))
+        Toast.fire({
+        icon: 'success',
+        title: '{{ session('success') }}'
+        })
+    @endif
+
+    @if (session()->has('error'))
+        Toast.fire({
+        icon: 'error',
+        title: '{{ session('error') }}'
+        })
+    @endif
+    
+</script>
+
 @yield('custom_js')

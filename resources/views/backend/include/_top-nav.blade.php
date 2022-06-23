@@ -167,7 +167,15 @@
                                 <li>
                                     <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                 </li>
-                                <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                <li>
+                                    <form id="logout-form" method="POST" action="{{ route('admin.logout') }}">
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">
+                                            <i class="icon-key"></i> 
+                                            <span>Logout</span>
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>
