@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AjaxController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,9 @@ Route::group(['middleware' => 'admin_auth'], function()
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/admin/category', CategoryController::class);
 
+     // Ajax Controller Route
+     Route::post('/categoryUpdateStatus', [AjaxController::class, 'categoryUpdateStatus'])->name('category.updateStatus');
+     
 });
 
 
