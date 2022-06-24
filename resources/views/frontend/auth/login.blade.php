@@ -36,6 +36,9 @@
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
+
+                                <p>Need An Account? <a href="{{ route('user.register') }}">Sign Up Now</a>!</p>
+                                <p>Go to Home? <a href="{{ route('home') }}">Home</a>!</p>
                             </div>
                         </div>
                     </div>

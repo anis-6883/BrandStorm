@@ -61,6 +61,9 @@
 
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign Up Now</button>
                                 </form>
+
+                                <p>Have An Account? <a href="{{ route('user.login') }}">Sign In Now</a>!</p>
+                                <p>Go to Home? <a href="{{ route('home') }}">Home</a>!</p>
                             </div>
                         </div>
                     </div>

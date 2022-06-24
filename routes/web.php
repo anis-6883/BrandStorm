@@ -5,6 +5,8 @@ use App\Http\Controllers\Backend\AjaxController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\SubcategoryController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,14 +21,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/user/login', [UserController::class, 'login'])->name('user.login')->middleware('guest');
+Route::post('/user/authenticate', [UserController::class, 'login'])->name('user.authenticate')->middleware('guest');
+Route::post('/user/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('auth');
+Route::get('/user/register', [UserController::class, 'register'])->name('user.register')->middleware('guest');
+Route::post('/user/register', [UserController::class, 'register'])->name('user.register')->middleware('guest');
 
-Route::get('/user/login', [UserController::class, 'login'])->name('user.login');
-Route::post('/user/authenticate', [UserController::class, 'login'])->name('user.authenticate');
-Route::get('/user/register', [UserController::class, 'register'])->name('user.register');
-Route::post('/user/register', [UserController::class, 'register'])->name('user.register');
+Route::get('/user/package/{slug}', [HomeController::class, 'packageDetails'])->name('package.packageDetails');
+Route::post('/package/proceedToOrder/{package_id}', [OrderController::class, 'proceedToOrder'])->name('package.proceedToOrder');
+Route::get('/package/orderedPackage', [OrderController::class, 'orderedPackage'])->name('package.orderedPackage');
+Route::post('/package/confirmOrder/{order_id}', [OrderController::class, 'confirmOrder'])->name('package.confirmOrder');
+Route::post('/package/deleteOrder/{order_id}', [OrderController::class, 'deleteOrder'])->name('package.deleteOrder');
+Route::get('/user/myOrders', [UserController::class, 'myOrders'])->name('user.myOrders');
 
 // Admin Login Route
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

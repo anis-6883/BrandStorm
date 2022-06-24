@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -55,7 +57,20 @@ class UserController extends Controller
                 return redirect()->back();
             }
 
-            return "Login Successfully!";
+            return redirect()->route('home');
         }
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('user.login')->with('success', 'GoodBye! Logout Successfully.');
+    }
+
+    public function myOrders()
+    {
+        $orders = Order::with('package')->where('user_id', Auth::user()->id)->latest()->get();
+        return view('frontend.user-order-list', compact('orders'));
+    }
+
 }
