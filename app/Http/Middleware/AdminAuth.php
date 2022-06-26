@@ -17,7 +17,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!(Auth::user() && Auth::user()->user_status == 'Active' && Auth::user()->user_type == 'Admin'))
+        if(!(session()->has('admin_login')))
         {
             session()->flash('error', 'Sorry! You are not Authorized.');
             return redirect()->route('admin.index');

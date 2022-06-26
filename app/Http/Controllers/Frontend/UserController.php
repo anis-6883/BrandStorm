@@ -56,7 +56,8 @@ class UserController extends Controller
                 session()->flash('error', 'Your provided credential could not be varified!');
                 return redirect()->back();
             }
-
+            
+            session()->regenerate();
             return redirect()->route('home');
         }
     }
