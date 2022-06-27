@@ -13,6 +13,12 @@ class OrderController extends Controller
     // Proceed To Order
     public function proceedToOrder($package_id)
     {
+        if(!Auth::check())
+        {
+            session()->flash('warning', 'You have to Login for Place Order!');
+            return redirect()->back();
+        }
+
         $exists = Order::with('package')->where([['user_id', Auth::user()->id], ['order_status', 'Ordered']])->exists();
         if($exists)
         {

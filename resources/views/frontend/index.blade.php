@@ -15,7 +15,7 @@
                     <img width="100%" src="{{ asset('uploads/packages/'. $special_deal->package_image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <a href="{{ route('package.packageDetails', $special_deal->package_slug) }}"><h5 class="card-title">{{ $special_deal->package_title }}</h5></a>
-                      <p class="card-text"><b>Description:</b> {!!  Str::of($special_deal->package_description)->limit(100) !!}</p>
+                      <p class="card-text"><b>Description:</b> {!!  Str::of($special_deal->package_description)->limit(50) !!}</p>
                       <p class="card-text"><b>Subscription:</b> {{ $special_deal->subscription_type }}</p>
                       <p class="card-text"><b>Package Cost:</b> {{ $special_deal->package_cost }}$</p>
                     </div>
@@ -61,7 +61,7 @@
                         <img height="100%" width="100%" src="{{ asset('uploads/packages/'. $package->package_image) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                         <a href="{{ route('package.packageDetails', $package->package_slug) }}"><h5 class="card-title">{{ $package->package_title }}</h5></a>
-                        <p class="card-text"><b>Description:</b> {!!  Str::of($package->package_description)->limit(100) !!}</p>
+                        <p class="card-text"><b>Description:</b> {!!  Str::of($package->package_description)->limit(50) !!}</p>
                         <p class="card-text"><b>Subscription:</b> {{ $package->subscription_type }}</p>
                         <p class="card-text"><b>Package Cost:</b> {{ $package->package_cost }}$</p>
                         </div>
